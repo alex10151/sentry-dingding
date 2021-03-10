@@ -2,10 +2,10 @@
 
 `Sentry`的`钉钉`通知插件
 
-## 安装
-
+## onpremise中安装
+reuqirement.txt中加入依赖：
 ```bash
-$ pip install sentry-dingding
+sentry-dingding-2021
 ```
 
 ## 使用
