@@ -17,9 +17,9 @@ class DingDingPlugin(NotificationPlugin):
     """
     author = 'hsw10151'
     version = sentry_dingding.VERSION
-    description = 'upgraded DingDing integrations for sentry. '
-    slug = 'DingDing'
-    title = 'DingDing'
+    description = 'upgraded DingTalk integrations for sentry. '
+    slug = 'DingTalk-2021'
+    title = 'DingTalk-2021'
     conf_key = slug
     conf_title = title
     project_conf_form = DingDingOptionsForm
@@ -59,8 +59,6 @@ class DingDingPlugin(NotificationPlugin):
                     proj=event.tags.project,
                     id=event.event_id,
                     requestFrom=event.request.url
-
-                    
                 )
             }
         }
