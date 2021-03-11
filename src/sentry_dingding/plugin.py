@@ -45,16 +45,22 @@ class DingDingPlugin(NotificationPlugin):
 
         access_token = self.get_option('access_token', group.project)
         send_url = DingTalk_API.format(token=access_token)
-        title = u"New alert from {}".format(event.project.slug)
+        title = u">>>>>发现异常: \n [$Sentry Alert from {}]".format(event.project.slug)
 
         data = {
             "msgtype": "markdown",
             "markdown": {
                 "title": title,
-                "text": u"#### {title} \n > {message} [href]({url})".format(
+                "text": u"#### {title} \n > {message} [href]({url})  \n  Environment: {env} \n Project: {proj} \n Id: {id} \n RequestFrom:{requestFrom}".format(
                     title=title,
                     message=event.message,
-                    url=u"{}events/{}/".format(group.get_absolute_url(), event.event_id)
+                    url=u"{}events/{}/".format(group.get_absolute_url(), event.event_id),
+                    env=event.environment,
+                    proj=event.tags.project,
+                    id=event.event_id,
+                    requestFrom=event.request.url
+
+                    
                 )
             }
         }
